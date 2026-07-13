@@ -132,7 +132,12 @@ export function AmiLabsBriefing() {
         </aside>
       </div>
 
-      <h2 id="data-wall">Why Today&rsquo;s AI Falls Short</h2>
+      <h2 id="data-wall">Chatbots Don&rsquo;t Know Physics</h2>
+
+      <p>
+        LeCun&rsquo;s first point is practical: today&rsquo;s AI is great at language and weak
+        at everyday physical know-how.
+      </p>
 
       <h3>Easy for us, hard for machines</h3>
       <p>
@@ -294,19 +299,19 @@ export function AmiLabsBriefing() {
         to pay attention to what&rsquo;s actually in front of it.
       </p>
 
-      <h2 id="vjepa">Learning Physics from Video</h2>
+      <h2 id="vjepa">Does the Model &ldquo;Get&rdquo; Physics?</h2>
 
       <p>
-        When JEPA is trained on video (called V-JEPA), something surprising happens: the model
-        starts to understand physics on its own, without anyone teaching it.<Cite id={6} />
+        So far this is theory. Does JEPA actually learn anything useful when you train it on
+        video? LeCun&rsquo;s answer: yes. The video version is called V-JEPA.<Cite id={6} />
       </p>
 
       <p>
-        Researchers test infant intelligence by showing babies impossible events (a ball that
-        vanishes mid-air, a block that passes through a wall) and measuring their surprise.
-        LeCun showed the same trick works on V-JEPA: when the model sees something physically
-        impossible, its prediction error spikes. When physics behaves normally, error stays
-        low.<Cite id={1} />
+        Psychologists test babies by showing them impossible events (a ball vanishing mid-air,
+        a block sliding through a wall) and watching for surprise. LeCun did the same with
+        V-JEPA. When the video follows normal physics, the model&rsquo;s prediction error stays
+        low. When physics breaks, the error jumps.<Cite id={1} /> Nobody coded in gravity or
+        object permanence. The pattern showed up from watching video.
       </p>
 
       <ChartFigure
@@ -542,38 +547,49 @@ export function AmiLabsBriefing() {
 
       <div className="my-8 rounded-sm border border-stone-200 bg-stone-50 p-5">
         <p className="text-xs font-semibold uppercase tracking-widest text-stone-400">
-          Don&rsquo;t confuse these
+          Two different things, similar names
         </p>
-        <p className="mt-3 text-base leading-relaxed text-stone-700">
-          <strong>World Labs</strong> is a company (founded by Fei-Fei Li). It builds AI that
-          generates and understands 3D spaces and video. Its marketing uses the phrase &ldquo;large
-          world models,&rdquo; but the product direction is visual: creating environments you can
-          see and move through.
-        </p>
-        <p className="mt-3 text-base leading-relaxed text-stone-700">
-          <strong>World models</strong> is what LeCun and AMI Labs mean technically. It is an
-          architecture, not a company name. The system learns an internal model of how the world
-          works so it can predict what happens next and plan actions. It does not generate pixels.
-          AMI Labs uses JEPA. World Labs does not.
-        </p>
-        <p className="mt-3 text-sm text-stone-500">
-          Same words, different things. One is a startup building spatial AI. The other is a
-          research approach to physical intelligence.
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-sm border border-stone-200 bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-purple-600">
+              Company
+            </p>
+            <p className="mt-2 font-serif text-lg font-bold text-stone-900">World Labs</p>
+            <p className="mt-2 text-sm leading-relaxed text-stone-600">
+              Fei-Fei Li&rsquo;s startup. Builds AI for 3D spaces and video. Visual products:
+              environments you can see and move through.<Cite id={14} />
+            </p>
+          </div>
+          <div className="rounded-sm border border-stone-200 bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-amber-700">
+              Technical idea
+            </p>
+            <p className="mt-2 font-serif text-lg font-bold text-stone-900">World models</p>
+            <p className="mt-2 text-sm leading-relaxed text-stone-600">
+              What LeCun and AMI Labs mean. An internal model of how the world works, used to
+              predict outcomes and plan actions. Not a product that generates pixels. Built with
+              JEPA.
+            </p>
+          </div>
+        </div>
+        <p className="mt-4 text-sm text-stone-500">
+          World Labs (the company) is not building LeCun&rsquo;s JEPA world models. The names
+          overlap. The goals do not.
         </p>
       </div>
 
       <p>
         Follow the money and almost all of it has gone to chatbots. OpenAI, Google, Anthropic,
-        Meta: scale the language model, ship the API, repeat. World Labs is chasing spatial AI.
-        AMI Labs is chasing something else: systems that watch the real world, learn how it
-        behaves, and figure out what to do inside it.
+        Meta: scale the language model, ship the API, repeat. Fei-Fei Li&rsquo;s company World
+        Labs is chasing spatial AI. AMI Labs is chasing something else: systems that watch the
+        real world, learn how it behaves, and figure out what to do inside it.
       </p>
 
       <p>
         The chart below uses one leading company per approach and only numbers from public
-        funding announcements. Anthropic represents the LLM camp. World Labs is the spatial AI
-        company (not the same as LeCun&rsquo;s world-model architecture). AMI Labs is the JEPA
-        bet. Different stages and round types, but it shows where capital is landing.
+        funding announcements. Anthropic stands for the LLM camp. World Labs stands for spatial
+        AI. AMI Labs stands for the JEPA bet. Different stages and round types, but it shows
+        where capital is landing.
       </p>
 
       <ChartFigure

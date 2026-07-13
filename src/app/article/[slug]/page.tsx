@@ -31,10 +31,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const AMI_TOC = [
-  { id: "data-wall", label: "Why Today's AI Falls Short" },
+  { id: "data-wall", label: "Chatbots Don't Know Physics" },
   { id: "autoregressive-failure", label: "The Problem with Chatbots" },
   { id: "jepa", label: "LeCun's Alternative: JEPA" },
-  { id: "vjepa", label: "Learning Physics from Video" },
+  { id: "vjepa", label: "Does the Model 'Get' Physics?" },
   { id: "meta-break", label: "The Break with Meta" },
   { id: "ami-labs", label: "AMI Labs: The Company" },
   { id: "executives", label: "Who's Running It" },
