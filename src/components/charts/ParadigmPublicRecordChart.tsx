@@ -74,43 +74,46 @@ export function ParadigmPublicRecordChart() {
   return (
     <div className="w-full min-w-0">
       <div className="overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
-        <div className="min-w-[28rem] sm:min-w-0">
-          <ResponsiveContainer width="100%" height={280}>
-            <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+        {/* Fixed mobile width so grouped columns keep desktop scale; scroll instead of shrink */}
+        <div className="h-[280px] w-[40rem] shrink-0 md:w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={data} margin={{ top: 8, right: 16, left: 8, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
               <XAxis
                 dataKey="name"
-                tick={{ fontSize: 11, fill: "#78716c" }}
+                tick={{ fontSize: 12, fill: "#78716c" }}
                 axisLine={{ stroke: "#d6d3d1" }}
                 tickLine={false}
                 interval={0}
               />
               <YAxis
-                tick={{ fontSize: 10, fill: "#78716c" }}
+                tick={{ fontSize: 11, fill: "#78716c" }}
                 axisLine={{ stroke: "#d6d3d1" }}
                 tickLine={false}
-                width={36}
+                width={40}
               />
               <Tooltip content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ fontSize: 11, paddingTop: 8 }} />
+              <Legend wrapperStyle={{ fontSize: 12, paddingTop: 8 }} />
               <Bar
                 name="Latest valuation"
                 dataKey="valuation"
                 radius={[2, 2, 0, 0]}
-                maxBarSize={36}
+                maxBarSize={40}
                 fill="#78716c"
               />
               <Bar
                 name="Capital raised"
                 dataKey="funding"
                 radius={[2, 2, 0, 0]}
-                maxBarSize={36}
+                maxBarSize={40}
                 fill="#d6d3d1"
               />
             </BarChart>
           </ResponsiveContainer>
-          <p className="mt-1 text-center text-[10px] text-stone-400">USD billions</p>
         </div>
+        <p className="mt-1 w-[40rem] text-center text-[10px] text-stone-400 md:w-full">
+          USD billions
+        </p>
       </div>
       <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 pt-3">
         {data.map((item) => (

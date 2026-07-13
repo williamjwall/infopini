@@ -69,47 +69,49 @@ function CustomTooltip({
 
 export function FrontierFundingChart() {
   return (
-    <div className="w-full min-w-0">
-      <ResponsiveContainer width="100%" height={280}>
-        <BarChart
-          data={data}
-          layout="vertical"
-          margin={{ top: 4, right: 12, left: 0, bottom: 16 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" horizontal={false} />
-          <XAxis
-            type="number"
-            domain={[0, 4]}
-            tickFormatter={(v) => formatBillions(v)}
-            tick={{ fontSize: 10, fill: "#78716c" }}
-            axisLine={{ stroke: "#d6d3d1" }}
-            tickLine={false}
-            label={{
-              value: "USD (billions)",
-              position: "insideBottom",
-              offset: -4,
-              style: { fontSize: 10, fill: "#a8a29e" },
-            }}
-          />
-          <YAxis
-            type="category"
-            dataKey="name"
-            tick={{ fontSize: 10, fill: "#78716c" }}
-            axisLine={false}
-            tickLine={false}
-            width={88}
-          />
-          <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="billions" radius={[0, 2, 2, 0]} maxBarSize={24}>
-            {data.map((entry) => (
-              <Cell
-                key={entry.name}
-                fill={entry.highlight ? "#1c1917" : "#d6d3d1"}
-              />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+    <div className="w-full min-w-0 overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
+      <div className="h-[280px] w-[36rem] shrink-0 md:w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={data}
+            layout="vertical"
+            margin={{ top: 4, right: 16, left: 4, bottom: 16 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" horizontal={false} />
+            <XAxis
+              type="number"
+              domain={[0, 4]}
+              tickFormatter={(v) => formatBillions(v)}
+              tick={{ fontSize: 11, fill: "#78716c" }}
+              axisLine={{ stroke: "#d6d3d1" }}
+              tickLine={false}
+              label={{
+                value: "USD (billions)",
+                position: "insideBottom",
+                offset: -4,
+                style: { fontSize: 11, fill: "#a8a29e" },
+              }}
+            />
+            <YAxis
+              type="category"
+              dataKey="name"
+              tick={{ fontSize: 11, fill: "#78716c" }}
+              axisLine={false}
+              tickLine={false}
+              width={100}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <Bar dataKey="billions" radius={[0, 2, 2, 0]} maxBarSize={28}>
+              {data.map((entry) => (
+                <Cell
+                  key={entry.name}
+                  fill={entry.highlight ? "#1c1917" : "#d6d3d1"}
+                />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }
