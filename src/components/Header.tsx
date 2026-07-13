@@ -25,7 +25,7 @@ export function Header() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex items-center justify-between py-5">
           <Link href="/" className="group">
-            <span className="font-serif text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
+            <span className="font-serif text-3xl font-bold tracking-tight text-brand md:text-4xl">
               Infopini
             </span>
           </Link>

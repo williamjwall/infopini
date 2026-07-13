@@ -13,9 +13,9 @@ tags:
   - deal-timeline
   - sector-benchmark
   - private-markets
-image: /images/yann-lecun.jpg
-imageCredit: "Yann LeCun at École Polytechnique, 2018 · Jérémy Barande / CC BY-SA 2.0"
-imageCreditUrl: "https://commons.wikimedia.org/wiki/File:Yann_LeCun_(41208595340).jpg"
+image: /images/yann-lecun-ipam.jpg
+imageCredit: "Yann LeCun · IPAM / UCLA"
+imageCreditUrl: "https://www.ipam.ucla.edu/wp-content/uploads/2013/12/LeCun_2018_v2-825x550.jpg"
 ---
 
 <!-- Rich article content rendered by AmiLabsBriefing.tsx -->
