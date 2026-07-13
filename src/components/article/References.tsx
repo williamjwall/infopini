@@ -12,7 +12,7 @@ export function References({ items }: { items: Reference[] }) {
         {items.map((ref) => (
           <li key={ref.id} id={`ref-${ref.id}`} className="flex gap-3">
             <span className="shrink-0 font-medium text-stone-400">[{ref.id}]</span>
-            <span>
+            <span className="min-w-0 break-words">
               {ref.text}
               {ref.url && (
                 <>
@@ -23,7 +23,7 @@ export function References({ items }: { items: Reference[] }) {
                     rel="noopener noreferrer"
                     className="text-stone-800 underline decoration-stone-300 underline-offset-2 hover:decoration-stone-600"
                   >
-                    {ref.url}
+                    Link
                   </a>
                 </>
               )}

@@ -53,7 +53,7 @@ export default async function ArticlePage({ params }: Props) {
   const isBriefing = slug === "ami-labs-briefing";
 
   return (
-    <div className="bg-white">
+    <div className="w-full overflow-x-clip bg-white">
       {isBriefing && (
         <div className="relative border-b border-stone-200 bg-stone-900">
           {article.image && (
@@ -112,10 +112,12 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       )}
 
-      <div className="mx-auto max-w-6xl px-4 py-10">
-        <div className={`grid gap-12 ${isBriefing ? "lg:grid-cols-4" : ""}`}>
+      <div className="mx-auto w-full max-w-6xl px-4 py-10">
+        <div
+          className={`grid min-w-0 gap-12 ${isBriefing ? "lg:grid-cols-4" : ""}`}
+        >
           {isBriefing && (
-            <aside className="hidden lg:col-span-1 lg:block">
+            <aside className="hidden min-w-0 lg:col-span-1 lg:block">
               <nav className="sticky top-28">
                 <p className="text-xs font-semibold uppercase tracking-widest text-stone-400">
                   In this briefing
@@ -136,7 +138,9 @@ export default async function ArticlePage({ params }: Props) {
             </aside>
           )}
 
-          <article className={isBriefing ? "lg:col-span-3" : "mx-auto max-w-4xl"}>
+          <article
+            className={`min-w-0 ${isBriefing ? "lg:col-span-3" : "mx-auto max-w-4xl"}`}
+          >
             {!isBriefing && (
               <>
                 {article.image && (

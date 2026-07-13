@@ -94,8 +94,8 @@ const REFERENCES = [
 
 export function AmiLabsBriefing() {
   return (
-    <div className="article-body max-w-none">
-      <div className="my-6 grid gap-6 lg:my-8 lg:grid-cols-3 lg:items-start lg:gap-8">
+    <div className="article-body max-w-none min-w-0 overflow-x-clip">
+      <div className="my-6 grid min-w-0 gap-6 lg:my-8 lg:grid-cols-3 lg:items-start lg:gap-8">
         <div className="min-w-0 space-y-4 lg:col-span-2 lg:space-y-5">
           <p className="text-lg leading-relaxed text-stone-600 sm:text-xl">
             Yann LeCun took the stage at ETH Zürich in May 2026 and said the quiet part out
@@ -117,7 +117,7 @@ export function AmiLabsBriefing() {
           </p>
         </div>
 
-        <aside className="lg:col-span-1">
+        <aside className="min-w-0 lg:col-span-1">
           <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-stone-400">
             Watch the lecture
           </p>
@@ -599,42 +599,61 @@ export function AmiLabsBriefing() {
         <ParadigmPublicRecordChart />
       </ChartFigure>
 
-      <div className="my-8 overflow-x-auto">
+      <div className="my-8 overflow-x-auto overscroll-x-contain">
         <table>
           <thead>
             <tr>
               <th>Company</th>
-              <th>Paradigm</th>
-              <th>Founded</th>
-              <th>Latest valuation</th>
-              <th>Capital raised</th>
-              <th>Product status</th>
+              <th>Focus</th>
+              <th className="whitespace-nowrap">Founded</th>
+              <th>Valuation</th>
+              <th>Raised</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Anthropic</td>
               <td>LLMs</td>
-              <td>2021</td>
-              <td>$61.5B post-money (Mar 2025)<Cite id={13} /></td>
-              <td>~$18.2B total<Cite id={13} /></td>
-              <td>Shipping (Claude)</td>
+              <td className="whitespace-nowrap">2021</td>
+              <td className="whitespace-nowrap">
+                $61.5B <span className="text-stone-400">(Mar 2025)</span>
+                <Cite id={13} />
+              </td>
+              <td className="whitespace-nowrap">
+                ~$18.2B
+                <Cite id={13} />
+              </td>
+              <td>Shipping</td>
             </tr>
             <tr>
               <td>World Labs</td>
-              <td>Spatial / 3D (company)</td>
-              <td>2023</td>
-              <td>~$5B (Feb 2026)<Cite id={15} /></td>
-              <td>~$1.23B total<Cite id={14} /><Cite id={15} /></td>
-              <td>In development</td>
+              <td>Spatial AI</td>
+              <td className="whitespace-nowrap">2023</td>
+              <td className="whitespace-nowrap">
+                ~$5B <span className="text-stone-400">(Feb 2026)</span>
+                <Cite id={15} />
+              </td>
+              <td className="whitespace-nowrap">
+                ~$1.23B
+                <Cite id={14} />
+                <Cite id={15} />
+              </td>
+              <td>Building</td>
             </tr>
             <tr>
               <td>AMI Labs</td>
-              <td>World models / JEPA (architecture)</td>
-              <td>Dec 2025</td>
-              <td>$3.5B pre-money (Mar 2026)<Cite id={2} /></td>
-              <td>$1.03B seed<Cite id={2} /></td>
-              <td>~5 years to product<Cite id={1} /></td>
+              <td>JEPA</td>
+              <td className="whitespace-nowrap">Dec 2025</td>
+              <td className="whitespace-nowrap">
+                $3.5B pre <span className="text-stone-400">(Mar 2026)</span>
+                <Cite id={2} />
+              </td>
+              <td className="whitespace-nowrap">
+                $1.03B seed
+                <Cite id={2} />
+              </td>
+              <td>~5 yrs out<Cite id={1} /></td>
             </tr>
           </tbody>
         </table>

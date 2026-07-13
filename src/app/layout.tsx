@@ -37,9 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${newsreader.variable} ${sourceSans.variable}`}>
-      <body className="flex min-h-screen flex-col antialiased">
+      <body className="flex min-h-screen min-w-0 flex-col overflow-x-clip antialiased">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="min-w-0 flex-1 overflow-x-clip">{children}</main>
         <Footer />
       </body>
     </html>

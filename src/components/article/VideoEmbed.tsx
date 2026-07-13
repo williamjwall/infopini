@@ -9,7 +9,7 @@ export function VideoEmbed({
 }) {
   return (
     <figure
-      className={`overflow-hidden rounded-sm border border-stone-200 bg-black ${
+      className={`max-w-full overflow-hidden rounded-sm border border-stone-200 bg-black ${
         compact ? "" : "my-10"
       }`}
     >
@@ -23,7 +23,7 @@ export function VideoEmbed({
         />
       </div>
       <figcaption
-        className={`bg-stone-900 text-stone-400 ${
+        className={`break-words bg-stone-900 text-stone-400 ${
           compact
             ? "border-t border-stone-800 px-3 py-2 text-[11px] leading-snug"
             : "border-t border-stone-800 px-5 py-3 text-xs"

@@ -19,9 +19,9 @@ const data = [
     highlight: true,
   },
   {
-    name: "Thinking Machines",
+    name: "Thinking Mach.",
     billions: 2.0,
-    round: "Seed, Jul 2025",
+    round: "Thinking Machines · Seed, Jul 2025",
     highlight: false,
   },
   {
@@ -97,7 +97,7 @@ export function FrontierFundingChart() {
             tick={{ fontSize: 10, fill: "#78716c" }}
             axisLine={false}
             tickLine={false}
-            width={96}
+            width={88}
           />
           <Tooltip content={<CustomTooltip />} />
           <Bar dataKey="billions" radius={[0, 2, 2, 0]} maxBarSize={24}>
