@@ -7,10 +7,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <p className="font-serif text-2xl font-bold text-stone-900">
-              I<span className="text-brand">nf</span>o<span className="text-brand">p</span>i
-              <span className="text-brand">n</span>i
-            </p>
+            <p className="font-serif text-2xl font-bold text-stone-900">Infopini</p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-stone-500">
               Independent intelligence on the companies, deals, and policy decisions
               shaping technology and life sciences.

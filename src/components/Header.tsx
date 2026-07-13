@@ -26,8 +26,7 @@ export function Header() {
         <div className="flex items-center justify-between py-5">
           <Link href="/" className="group">
             <span className="font-serif text-3xl font-bold tracking-tight text-stone-900 md:text-4xl">
-              I<span className="text-brand">nf</span>o<span className="text-brand">p</span>i
-              <span className="text-brand">n</span>i
+              Infopini
             </span>
           </Link>
           <div className="hidden items-center gap-6 md:flex">
