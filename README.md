@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Infopini
 
-## Getting Started
+A clean, editorial news site covering **Tech**, **Biotech**, and **Policy**.
 
-First, run the development server:
+Built with Next.js and Markdown — no database, no CMS. Just add articles and deploy.
+
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Adding Articles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a new `.md` file in `content/articles/`:
 
-## Learn More
+```markdown
+---
+title: "Your Headline Here"
+excerpt: "A one- or two-sentence summary for listings and SEO."
+category: tech          # tech | biotech | policy
+author: "Your Name"
+date: 2026-07-13
+featured: false         # optional — shows on homepage hero
+---
 
-To learn more about Next.js, take a look at the following resources:
+Your article body in Markdown. Supports **bold**, lists, blockquotes, and headings.
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The filename becomes the URL slug: `my-article.md` → `/article/my-article`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Categories
 
-## Deploy on Vercel
+| Slug       | Section  | URL        |
+|------------|----------|------------|
+| `tech`     | Tech     | `/tech`    |
+| `biotech`  | Biotech  | `/biotech` |
+| `policy`   | Policy   | `/policy`  |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+content/articles/     ← Markdown articles (your content)
+src/
+  app/                ← Pages (home, category, article)
+  components/         ← Header, Footer, ArticleCard, etc.
+  lib/articles.ts     ← Reads and parses Markdown files
+  types/article.ts    ← Category definitions
+```
+
+## Deploy
+
+Works on Vercel out of the box:
+
+```bash
+npx vercel
+```
+
+Articles are read at build time. After adding or editing content, redeploy (or restart the dev server locally).
