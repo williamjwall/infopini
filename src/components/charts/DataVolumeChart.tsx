@@ -48,33 +48,35 @@ function CustomTooltip({
 
 export function DataVolumeChart() {
   return (
-    <div className="w-full min-w-0">
-      <ResponsiveContainer width="100%" height={260}>
-        <BarChart data={data} margin={{ top: 28, right: 8, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
-          <XAxis
-            dataKey="name"
-            tick={{ fontSize: 11, fill: "#78716c" }}
-            axisLine={{ stroke: "#d6d3d1" }}
-            tickLine={false}
-            interval={0}
-          />
-          <YAxis hide domain={[0, 1.2e14]} />
-          <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="bytes" radius={[2, 2, 0, 0]} maxBarSize={96}>
-            <Cell fill="#1c1917" />
-            <Cell fill="#1c1917" />
-            <LabelList
-              dataKey="display"
-              position="top"
-              style={{ fontSize: 11, fill: "#44403c", fontWeight: 600 }}
+    <div className="w-full min-w-0 overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
+      <div className="min-w-[22rem] sm:min-w-0">
+        <ResponsiveContainer width="100%" height={260}>
+          <BarChart data={data} margin={{ top: 28, right: 8, left: 0, bottom: 0 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
+            <XAxis
+              dataKey="name"
+              tick={{ fontSize: 11, fill: "#78716c" }}
+              axisLine={{ stroke: "#d6d3d1" }}
+              tickLine={false}
+              interval={0}
             />
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-      <p className="mt-2 text-center text-xs text-stone-400">
-        Same approximate volume. Different source, time, and what you get from it.
-      </p>
+            <YAxis hide domain={[0, 1.2e14]} />
+            <Tooltip content={<CustomTooltip />} />
+            <Bar dataKey="bytes" radius={[2, 2, 0, 0]} maxBarSize={96}>
+              <Cell fill="#1c1917" />
+              <Cell fill="#1c1917" />
+              <LabelList
+                dataKey="display"
+                position="top"
+                style={{ fontSize: 11, fill: "#44403c", fontWeight: 600 }}
+              />
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+        <p className="mt-2 text-center text-xs text-stone-400">
+          Same approximate volume. Different source, time, and what you get from it.
+        </p>
+      </div>
     </div>
   );
 }

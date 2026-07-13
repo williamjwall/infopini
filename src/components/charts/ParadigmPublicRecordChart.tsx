@@ -73,41 +73,45 @@ function CustomTooltip({
 export function ParadigmPublicRecordChart() {
   return (
     <div className="w-full min-w-0">
-      <ResponsiveContainer width="100%" height={280}>
-        <BarChart data={data} margin={{ top: 8, right: 4, left: -12, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
-          <XAxis
-            dataKey="name"
-            tick={{ fontSize: 10, fill: "#78716c" }}
-            axisLine={{ stroke: "#d6d3d1" }}
-            tickLine={false}
-            interval={0}
-          />
-          <YAxis
-            tick={{ fontSize: 10, fill: "#78716c" }}
-            axisLine={{ stroke: "#d6d3d1" }}
-            tickLine={false}
-            width={36}
-          />
-          <Tooltip content={<CustomTooltip />} />
-          <Legend wrapperStyle={{ fontSize: 11, paddingTop: 8 }} />
-          <Bar
-            name="Latest valuation"
-            dataKey="valuation"
-            radius={[2, 2, 0, 0]}
-            maxBarSize={28}
-            fill="#78716c"
-          />
-          <Bar
-            name="Capital raised"
-            dataKey="funding"
-            radius={[2, 2, 0, 0]}
-            maxBarSize={28}
-            fill="#d6d3d1"
-          />
-        </BarChart>
-      </ResponsiveContainer>
-      <p className="mt-1 text-center text-[10px] text-stone-400">USD billions</p>
+      <div className="overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch]">
+        <div className="min-w-[28rem] sm:min-w-0">
+          <ResponsiveContainer width="100%" height={280}>
+            <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
+              <XAxis
+                dataKey="name"
+                tick={{ fontSize: 11, fill: "#78716c" }}
+                axisLine={{ stroke: "#d6d3d1" }}
+                tickLine={false}
+                interval={0}
+              />
+              <YAxis
+                tick={{ fontSize: 10, fill: "#78716c" }}
+                axisLine={{ stroke: "#d6d3d1" }}
+                tickLine={false}
+                width={36}
+              />
+              <Tooltip content={<CustomTooltip />} />
+              <Legend wrapperStyle={{ fontSize: 11, paddingTop: 8 }} />
+              <Bar
+                name="Latest valuation"
+                dataKey="valuation"
+                radius={[2, 2, 0, 0]}
+                maxBarSize={36}
+                fill="#78716c"
+              />
+              <Bar
+                name="Capital raised"
+                dataKey="funding"
+                radius={[2, 2, 0, 0]}
+                maxBarSize={36}
+                fill="#d6d3d1"
+              />
+            </BarChart>
+          </ResponsiveContainer>
+          <p className="mt-1 text-center text-[10px] text-stone-400">USD billions</p>
+        </div>
+      </div>
       <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 pt-3">
         {data.map((item) => (
           <div key={item.name} className="flex items-center gap-2 text-xs">
