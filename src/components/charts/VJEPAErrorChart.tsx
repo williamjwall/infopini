@@ -59,7 +59,7 @@ export function VJEPAErrorChart() {
           <Line
             type="monotone"
             dataKey="normal"
-            name="Physical sequence"
+            name="Normal video"
             stroke="#a8a29e"
             strokeWidth={2}
             dot={false}
@@ -67,7 +67,7 @@ export function VJEPAErrorChart() {
           <Line
             type="monotone"
             dataKey="violation"
-            name="Violation sequence"
+            name="Impossible video"
             stroke="#1c1917"
             strokeWidth={2}
             dot={false}
@@ -76,7 +76,7 @@ export function VJEPAErrorChart() {
         </LineChart>
       </ResponsiveContainer>
       <p className="mt-1 text-center text-[10px] text-stone-400">
-        Dashed line marks the physics violation
+        Dashed line: moment the clip stops looking physical (e.g. ball vanishes)
       </p>
     </div>
   );

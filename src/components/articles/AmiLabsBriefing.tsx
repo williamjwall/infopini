@@ -307,21 +307,23 @@ export function AmiLabsBriefing() {
       <h2 id="vjepa">Does the Model &ldquo;Get&rdquo; Physics?</h2>
 
       <p>
-        Training JEPA on video gives V-JEPA.<Cite id={6} /> In the lecture, LeCun shows what
-        happens when you feed it clips that violate physics.
+        Training JEPA on video gives V-JEPA.<Cite id={6} /> In the lecture, LeCun runs a
+        simple test: show the model two clips and watch how wrong its next-frame predictions
+        are.
       </p>
 
       <p>
-        Developmental psychologists already use this trick with babies: show an impossible
-        event and measure surprise. V-JEPA&rsquo;s prediction error stays low on ordinary
-        footage and rises when, say, a ball disappears mid-flight.<Cite id={1} /> There was no
-        hand-coded gravity rule in the demo. The sensitivity came from unsupervised training on
-        video.
+        One clip is ordinary (a ball follows a normal path). The other breaks physics (the ball
+        vanishes mid-flight). Psychologists use the same idea with infants: an impossible event
+        produces &ldquo;surprise.&rdquo; Here the readout is prediction error. On normal video,
+        error stays low. On the impossible clip, it spikes at the break — then settles as the
+        scene becomes predictable again.<Cite id={1} /> Nobody coded a gravity rule into the
+        model. That reaction came from unsupervised training on video.
       </p>
 
       <ChartFigure
         title="Figure 2. V-JEPA reacts to impossible physics"
-        caption="When shown a physically impossible sequence (e.g., a ball disappearing mid-air), V-JEPA's prediction error jumps sharply. Normal sequences produce stable, low error. This 'surprise' response emerges without any explicit physics training, similar to how infants react to impossible events."
+        caption="Illustrative: prediction error stays flat on normal video. On a clip where physics breaks (e.g. a ball disappearing), error jumps at that moment. The spike is the model's 'surprise' — analogous to infant looking-time experiments, with no explicit physics built in."
         source="LeCun, ETH Zürich lecture, timestamp 00:52:03; Bardes et al., V-JEPA (2024)"
         sourceRef={[1, 6]}
         sourceUrl="https://arxiv.org/abs/2404.00571"
@@ -542,35 +544,38 @@ export function AmiLabsBriefing() {
 
       <h2 id="competitive">Competitive Position</h2>
 
-      <div className="my-8 rounded-sm border border-stone-200 bg-stone-50 p-5">
-        <p className="text-xs font-semibold uppercase tracking-widest text-stone-400">
-          Two different things, similar names
+      <div className="my-8 border border-stone-200 bg-stone-50 px-5 py-5">
+        <p className="font-serif text-lg font-bold text-stone-900">
+          Try not to confuse these
+        </p>
+        <p className="mt-1 text-sm text-stone-500">
+          &ldquo;World Labs&rdquo; and &ldquo;world models&rdquo; sound alike. They are not the
+          same thing.
         </p>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-sm border border-stone-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-widest text-purple-600">
-              Company
+          <div className="border-t border-stone-300 pt-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400">
+              A company
             </p>
-            <p className="mt-2 font-serif text-lg font-bold text-stone-900">World Labs</p>
+            <p className="mt-2 font-serif text-base font-bold text-stone-900">World Labs</p>
             <p className="mt-2 text-sm leading-relaxed text-stone-600">
-              Fei-Fei Li&rsquo;s company. Spatial and video AI meant to generate and navigate 3D
-              scenes.<Cite id={14} />
+              Fei-Fei Li&rsquo;s startup. Builds spatial and video AI to generate and navigate
+              3D scenes.<Cite id={14} />
             </p>
           </div>
-          <div className="rounded-sm border border-stone-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-widest text-amber-700">
-              Technical idea
+          <div className="border-t border-stone-300 pt-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-400">
+              A technical idea
             </p>
-            <p className="mt-2 font-serif text-lg font-bold text-stone-900">World models</p>
+            <p className="mt-2 font-serif text-base font-bold text-stone-900">World models</p>
             <p className="mt-2 text-sm leading-relaxed text-stone-600">
-              LeCun&rsquo;s term for an internal predictor of how the world changes under
-              action. AMI Labs builds this with JEPA. It is not a video generator.
+              LeCun&rsquo;s term for an internal predictor of how the world changes when you
+              act. AMI Labs is building this with JEPA — not a video generator.
             </p>
           </div>
         </div>
         <p className="mt-4 text-sm text-stone-500">
-          Similar wording. Different product. World Labs is not shipping LeCun&rsquo;s JEPA
-          stack.
+          World Labs is not shipping LeCun&rsquo;s JEPA stack.
         </p>
       </div>
 
