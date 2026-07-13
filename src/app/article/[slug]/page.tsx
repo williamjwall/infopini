@@ -38,7 +38,7 @@ const AMI_TOC = [
   { id: "meta-break", label: "The Break with Meta" },
   { id: "ami-labs", label: "AMI Labs: The Company" },
   { id: "executives", label: "Who's Running It" },
-  { id: "competitive", label: "Where AMI Labs Sits" },
+  { id: "competitive", label: "Competitive Position" },
   { id: "takeaway", label: "What to Watch" },
   { id: "references", label: "References" },
 ];

@@ -538,7 +538,7 @@ export function AmiLabsBriefing() {
         training on top of the core model, without rebuilding it from scratch.<Cite id={1} />
       </p>
 
-      <h2 id="competitive">Where AMI Labs Sits</h2>
+      <h2 id="competitive">Competitive Position</h2>
 
       <div className="my-8 rounded-sm border border-stone-200 bg-stone-50 p-5">
         <p className="text-xs font-semibold uppercase tracking-widest text-stone-400">
