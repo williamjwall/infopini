@@ -1,5 +1,6 @@
 import { ArticleBody } from "@/components/ArticleBody";
 import { CategoryBadge } from "@/components/CategoryBadge";
+import { MobileToc } from "@/components/article/MobileToc";
 import { getAllArticles, getArticleBySlug } from "@/lib/articles";
 import { formatDate } from "@/lib/format";
 import { getRichArticleContent, hasRichArticle } from "@/lib/rich-articles";
@@ -68,25 +69,25 @@ export default async function ArticlePage({ params }: Props) {
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/90 to-stone-900/70" />
             </div>
           )}
-          <div className="relative mx-auto max-w-6xl px-4 py-10 md:py-14">
+          <div className="relative mx-auto max-w-6xl px-4 py-8 md:py-14">
             <p className="text-xs font-semibold uppercase tracking-widest text-stone-400">
               Private Company Briefing
             </p>
-            <h1 className="mt-3 max-w-4xl font-serif text-3xl font-bold leading-tight text-white md:text-5xl">
+            <h1 className="mt-3 max-w-4xl font-serif text-[1.75rem] font-bold leading-tight text-white sm:text-3xl md:text-5xl">
               {article.title}
             </h1>
-            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-stone-300">
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-stone-300 md:text-lg">
               {article.excerpt}
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-stone-400">
+            <div className="mt-5 flex flex-col gap-1 text-sm text-stone-400 sm:mt-6 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4 sm:gap-y-2">
               <span className="text-stone-200">By {article.author}</span>
-              <span>&middot;</span>
+              <span className="hidden sm:inline">&middot;</span>
               <time dateTime={article.date}>{formatDate(article.date)}</time>
-              <span>&middot;</span>
+              <span className="hidden sm:inline">&middot;</span>
               <span>15 min read</span>
               {article.sector && (
                 <>
-                  <span>&middot;</span>
+                  <span className="hidden sm:inline">&middot;</span>
                   <span>{article.sector}</span>
                 </>
               )}
@@ -169,22 +170,25 @@ export default async function ArticlePage({ params }: Props) {
             )}
 
             {isBriefing && (
-              <div className="mb-8 flex flex-wrap items-center gap-2">
-                <CategoryBadge category={article.category} />
-                {article.dataState && (
-                  <span className="rounded-sm border border-stone-200 bg-stone-50 px-2 py-0.5 text-xs font-medium text-stone-500">
-                    {article.dataState}
-                  </span>
-                )}
-                {article.tags?.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-sm bg-stone-100 px-2 py-0.5 text-xs text-stone-500"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <>
+                <MobileToc items={AMI_TOC} />
+                <div className="mb-8 flex flex-wrap items-center gap-2">
+                  <CategoryBadge category={article.category} />
+                  {article.dataState && (
+                    <span className="rounded-sm border border-stone-200 bg-stone-50 px-2 py-0.5 text-xs font-medium text-stone-500">
+                      {article.dataState}
+                    </span>
+                  )}
+                  {article.tags?.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-sm bg-stone-100 px-2 py-0.5 text-xs text-stone-500"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </>
             )}
 
             <div className={isBriefing ? "" : "mt-10"}>

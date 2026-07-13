@@ -22,9 +22,9 @@ export function ArticleCard({
         </div>
 
         <Link href={`/article/${article.slug}`} className="block">
-          <div className="grid gap-8 md:grid-cols-5 md:items-center">
+          <div className="grid gap-6 md:grid-cols-5 md:items-center md:gap-8">
             {article.image && (
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-stone-200 md:col-span-2">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-stone-200 md:col-span-2 md:aspect-[4/3]">
                 <Image
                   src={article.image}
                   alt=""
@@ -36,13 +36,13 @@ export function ArticleCard({
               </div>
             )}
             <div className={article.image ? "md:col-span-3" : ""}>
-              <h2 className="font-serif text-3xl font-bold leading-tight text-stone-900 transition-colors group-hover:text-stone-600 md:text-4xl">
+              <h2 className="font-serif text-2xl font-bold leading-tight text-stone-900 transition-colors group-hover:text-stone-600 sm:text-3xl md:text-4xl">
                 {article.title}
               </h2>
-              <p className="mt-4 text-lg leading-relaxed text-stone-600">
+              <p className="mt-3 text-base leading-relaxed text-stone-600 sm:mt-4 sm:text-lg">
                 {article.excerpt}
               </p>
-              <p className="mt-5 text-sm text-stone-400">
+              <p className="mt-4 text-sm text-stone-400 sm:mt-5">
                 {article.author} &middot; {formatDate(article.date)} &middot; 15
                 min read
               </p>

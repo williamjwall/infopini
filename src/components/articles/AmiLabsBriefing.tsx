@@ -95,28 +95,25 @@ const REFERENCES = [
 export function AmiLabsBriefing() {
   return (
     <div className="article-body max-w-none">
-      <div className="my-8 grid gap-8 lg:grid-cols-3 lg:items-start">
-        <div className="space-y-5 lg:col-span-2">
-          <p className="text-xl leading-relaxed text-stone-600">
-            Yann LeCun took the stage at ETH Zürich in May 2026. The Turing Award winner, who spent
-            a decade leading AI research at Meta, made a blunt claim: today&rsquo;s AI is nowhere
-            close to human intelligence, and the chatbot boom is headed down a dead end.<Cite id={1} />{" "}
-            Then he announced his new company, AMI Labs, backed by a record $1.03 billion seed round
-            at a $3.5 billion valuation.<Cite id={2} />
+      <div className="my-6 grid gap-6 lg:my-8 lg:grid-cols-3 lg:items-start lg:gap-8">
+        <div className="min-w-0 space-y-4 lg:col-span-2 lg:space-y-5">
+          <p className="text-lg leading-relaxed text-stone-600 sm:text-xl">
+            Yann LeCun took the stage at ETH Zürich in May 2026 and said the quiet part out
+            loud: the systems the industry is pouring money into are not on a path to human-level
+            intelligence.<Cite id={1} /> A few minutes later he talked about his new company, AMI
+            Labs, which had closed a $1.03 billion seed round at a $3.5 billion
+            valuation.<Cite id={2} />
           </p>
 
           <p className="!mb-0">
-            His argument is simple to state, even if the science behind it is not: language models
-            like ChatGPT learn from text. But humans learn about the world by seeing, touching, and
-            moving through it. LeCun believes the next breakthrough in AI will come from systems that
-            learn the way children do: by watching the physical world, not by reading more of the
-            internet.
+            LeCun spent a decade as Meta&rsquo;s chief AI scientist. His bet now is that
+            chatbots, trained on text, miss most of what a child learns by looking around. AMI
+            Labs wants machines that learn from sensory data and can act in the physical world.
           </p>
 
           <p className="!mb-0">
-            This briefing walks through his ETH Zürich lecture, explains the key ideas in plain
-            language, and maps out what AMI Labs is building, who is behind it, and how it fits into
-            the wider AI landscape.
+            What follows is based mainly on that ETH lecture, plus public filings and funding
+            announcements around the company.
           </p>
         </div>
 
@@ -134,23 +131,18 @@ export function AmiLabsBriefing() {
 
       <h2 id="data-wall">Chatbots Don&rsquo;t Know Physics</h2>
 
-      <p>
-        LeCun&rsquo;s first point is practical: today&rsquo;s AI is great at language and weak
-        at everyday physical know-how.
-      </p>
-
       <h3>Easy for us, hard for machines</h3>
       <p>
-        LeCun opens with a puzzle that researchers call the Moravec paradox: the things humans
-        find easy (walking, catching a ball, tidying a room) are brutally hard for AI. The
-        things we find hard (math, chess, coding) machines handle with ease.<Cite id={9} />
+        LeCun starts with a familiar gap. Walking across a room, catching a ball, cleaning up:
+        kids do this without a training set. Symbolic math and chess, which feel hard to us, were
+        cracked years ago by machines. Psychologists call this the Moravec paradox.<Cite id={9} />
       </p>
 
       <p>
-        A ten-year-old can do chores without being trained. A teenager learns to drive in a
-        weekend. Meanwhile, self-driving car companies have logged millions of hours of data and
-        still can&rsquo;t match a human driver.<Cite id={1} /> Something fundamental is missing
-        from how we train AI today.
+        A teenager can learn to drive in a weekend. Self-driving companies have millions of hours
+        of logged data and still stop short of a fully reliable driver.<Cite id={1} /> If your
+        training method needs that much data for a skill humans pick up quickly, something about
+        the method is wrong.
       </p>
 
       <blockquote>
@@ -164,53 +156,71 @@ export function AmiLabsBriefing() {
 
       <h3>The data wall</h3>
       <p>
-        Here is the number that anchors LeCun&rsquo;s critique. Training a modern large language
-        model requires roughly 20 to 30 trillion tokens of text, enough that it would take a
-        person 400,000 years to read it all.<Cite id={1} /> And after all that training, the
-        model still doesn&rsquo;t understand basic physics. It has never seen a ball fall.
+        Here is the calculation LeCun walks through in the talk
+        (<a
+          href="https://www.youtube.com/watch?v=72Xj8k5WQX4&t=617s"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ~00:10:17
+        </a>
+        ). Big language models are trained on roughly the whole public text of the internet:
+        about 20 trillion words, or 30 trillion tokens. At about 3 bytes per token, that is
+        about 10<sup>14</sup> bytes of text.<Cite id={1} />
       </p>
 
       <p>
-        Compare that to a four-year-old. In four years of looking around, a child absorbs
-        roughly 10<sup>14</sup> bytes of visual information and develops common sense: objects
-        don&rsquo;t vanish, cups fall down not up, people don&rsquo;t walk through walls.<Cite id={1} />{" "}
-        LeCun&rsquo;s point: children learn more about reality from far less data, because they
-        learn from the right kind of data: the physical world, not text about it.
+        A four-year-old, through vision alone, takes in about the same amount: also roughly
+        10<sup>14</sup> bytes over four years of waking life (optic nerve bandwidth times
+        waking hours).<Cite id={1} />
       </p>
 
       <ChartFigure
-        title="Figure 1. How much data does each approach need?"
-        caption="The gap between LLM training data and human sensory learning spans many orders of magnitude. LLMs consume trillions of text tokens; a child gains physical understanding from visual input in four years. LeCun argues this gap explains why text scaling alone cannot produce grounded intelligence."
+        title="Figure 1. Data volume: LLM text vs. a child's vision"
+        caption="Both bars are about 10¹⁴ bytes, matching LeCun's ETH Zürich slide. Left: text used to train today's largest LLMs. Right: visual input a four-year-old receives. Same unit (bytes), same order of magnitude."
         source="LeCun, ETH Zürich lecture, timestamp 00:10:17"
         sourceRef={1}
-        sourceUrl="https://www.youtube.com/watch?v=72Xj8k5WQX4&t=617"
+        sourceUrl="https://www.youtube.com/watch?v=72Xj8k5WQX4&t=617s"
       >
         <DataVolumeChart />
       </ChartFigure>
 
       <p>
-        Text, LeCun notes, is a compressed summary of what humans already know. It&rsquo;s
-        useful, but it&rsquo;s not the same as direct experience.<Cite id={4} /> The real world
-        is messy, continuous, and unpredictable. Current AI architectures weren&rsquo;t built
-        for that.
+        So the volumes match. What you get out of them does not. After four years of looking,
+        a child knows objects fall, walls are solid, and the world is three-dimensional. An LLM
+        trained on a similar byte budget of text has never watched a ball drop.
+      </p>
+
+      <p>
+        LeCun also puts the text corpus in human terms: reading it would take about 400,000
+        years.<Cite id={1} /> A child pulls in the same number of bytes in four years because
+        vision moves far more information than language does. Text compresses what people already
+        know how to say. It is not a substitute for seeing the world change when you move.
+      </p>
+
+      <p>
+        People sometimes object that video is too redundant for learning. LeCun treats that
+        redundancy as useful. If every frame is slightly different but the underlying world
+        stays related, a self-supervised model has something to latch onto. That stream is what
+        he wants AMI Labs working with, not another pass over the internet&rsquo;s text
+        dump.<Cite id={4} />
       </p>
 
       <h2 id="autoregressive-failure">The Problem with Chatbots</h2>
 
       <h3>Predicting words, not thinking</h3>
       <p>
-        ChatGPT and similar models work by predicting the next word, one at a time. LeCun
-        compares this to a reactive system. It responds, but it doesn&rsquo;t truly reason.<Cite id={1} />{" "}
-        When you plan a trip, you don&rsquo;t think in sentences. You imagine outcomes, weigh
-        options, and decide, all before you say a single word. LeCun wants AI that works the
-        same way: thinking in an internal model of the world, with language as just the output.
+        Models like ChatGPT choose the next token, then the next, through a fixed stack of
+        layers.<Cite id={1} /> LeCun calls that reactive. When people plan, they mostly do it
+        without narrating. You picture what might happen, discard bad options, then talk. He
+        wants machines that keep language as the last step, not the whole thought process.
       </p>
 
       <h3>A safer way to build AI</h3>
       <p>
-        LeCun proposes a different approach: instead of generating text, the system imagines
-        possible actions, predicts what would happen for each one, and picks the best option
-        based on a set of rules, including safety rules baked directly into the math.<Cite id={1} />
+        His alternative runs a search at inference time. The system proposes actions, uses a
+        world model to check likely outcomes, and scores those outcomes against an objective,
+        including hard safety constraints written into the math.<Cite id={1} />
       </p>
 
       <blockquote>
@@ -224,36 +234,32 @@ export function AmiLabsBriefing() {
       </blockquote>
 
       <p>
-        Today&rsquo;s chatbots add safety guardrails after the fact, and clever users routinely
-        find ways around them. LeCun&rsquo;s approach would make unsafe outputs mathematically
-        impossible, not just discouraged.
+        Chatbots usually get safety as a layer on top of generation. Users find ways around it.
+        If forbidden outcomes are ruled out by the objective itself, the jailbreak game changes.
       </p>
 
       <h3>Planning in steps</h3>
       <p>
-        Another gap: when you plan a vacation, you think &ldquo;book a flight, then get to the
-        airport,&rdquo; not &ldquo;move left foot 30 degrees, shift weight forward.&rdquo;
-        AI systems struggle to plan at this higher level. LeCun calls hierarchical planning an
-        open research problem, and one that word-prediction models are poorly suited to
-        solve.<Cite id={1} />
+        People plan trips as &ldquo;get to the airport,&rdquo; not as a sequence of foot
+        angles. Machines still struggle to work at that middle level of abstraction. LeCun
+        flags hierarchical planning as an open problem, and not one that next-token models are
+        set up to answer.<Cite id={1} />
       </p>
 
       <h2 id="jepa">LeCun&rsquo;s Alternative: World Models (JEPA)</h2>
 
       <h3>Stop generating pixels</h3>
       <p>
-        LeCun&rsquo;s answer is an architecture called JEPA (Joint Embedding Predictive
-        Architecture).<Cite id={4} /><Cite id={5} /> The core idea: instead of trying to predict
-        every pixel in the next video frame (like diffusion models or digital twins do), JEPA
-        learns a compressed internal picture of the world and predicts how that picture changes
-        when something happens.
+        JEPA stands for Joint Embedding Predictive Architecture.<Cite id={4} /><Cite id={5} />{" "}
+        Instead of drawing the next video frame pixel by pixel, as diffusion models and digital
+        twins often try to do, JEPA compresses what it sees into a smaller representation and
+        predicts how that representation should change after an action.
       </p>
 
       <p>
-        Why does this matter? The real world is full of random noise: leaves blowing, shadows
-        shifting, people walking by. Forcing a model to predict every detail is a waste. JEPA
-        strips out the noise and focuses on what actually matters: structure, objects, and how
-        they move.<Cite id={1} />
+        Leaves, lighting flicker, background motion: the world is noisy. Spending model capacity
+        on those details does not help an agent decide what to do. JEPA tries to ignore them and
+        keep the structure that matters for prediction.<Cite id={1} />
       </p>
 
       <div className="my-8 overflow-x-auto">
@@ -292,26 +298,25 @@ export function AmiLabsBriefing() {
 
       <h3>Preventing the &ldquo;cheating&rdquo; problem</h3>
       <p>
-        A major challenge in training these models is collapse: the AI finds a shortcut by
-        outputting the same answer every time, which makes its error rate look great but teaches
-        it nothing.<Cite id={1} /> LeCun describes three techniques to prevent this: Barlow
-        Twins, VICReg, and a newer method called SiggReg. The goal is the same: force the model
-        to pay attention to what&rsquo;s actually in front of it.
+        These training setups can collapse: the network learns to spit out a constant vector,
+        which drives prediction error toward zero while learning nothing about the input.<Cite id={1} />{" "}
+        LeCun walks through methods meant to stop that (Barlow Twins, VICReg, and a newer
+        method called SiggReg). The shared job is keeping the representation informative.
       </p>
 
       <h2 id="vjepa">Does the Model &ldquo;Get&rdquo; Physics?</h2>
 
       <p>
-        So far this is theory. Does JEPA actually learn anything useful when you train it on
-        video? LeCun&rsquo;s answer: yes. The video version is called V-JEPA.<Cite id={6} />
+        Training JEPA on video gives V-JEPA.<Cite id={6} /> In the lecture, LeCun shows what
+        happens when you feed it clips that violate physics.
       </p>
 
       <p>
-        Psychologists test babies by showing them impossible events (a ball vanishing mid-air,
-        a block sliding through a wall) and watching for surprise. LeCun did the same with
-        V-JEPA. When the video follows normal physics, the model&rsquo;s prediction error stays
-        low. When physics breaks, the error jumps.<Cite id={1} /> Nobody coded in gravity or
-        object permanence. The pattern showed up from watching video.
+        Developmental psychologists already use this trick with babies: show an impossible
+        event and measure surprise. V-JEPA&rsquo;s prediction error stays low on ordinary
+        footage and rises when, say, a ball disappears mid-flight.<Cite id={1} /> There was no
+        hand-coded gravity rule in the demo. The sensitivity came from unsupervised training on
+        video.
       </p>
 
       <ChartFigure
@@ -325,34 +330,31 @@ export function AmiLabsBriefing() {
       </ChartFigure>
 
       <p>
-        The model also learns to estimate depth and identify objects from a single frame: skills
-        that emerge naturally from watching video, not from labeled training data.<Cite id={1} />
+        From a single frame, the same representations can also support depth estimates and
+        object segmentation without labeled supervision for those tasks.<Cite id={1} />
       </p>
 
       <h2 id="meta-break">The Break with Meta</h2>
 
       <p>
-        To understand AMI Labs, you have to understand why LeCun left the company he helped
-        build. He spent 12 years at Meta, five as founding director of FAIR and seven as Chief AI
-        Scientist. He shaped everything from Instagram recommendations to the Llama language
-        models.<Cite id={7} /><Cite id={10} /> Then, in November 2025, he walked away.
+        LeCun spent 12 years at Meta: five founding FAIR, then seven as chief AI scientist. Much
+        of the company&rsquo;s modern AI stack, including work that fed into Llama, ran through
+        groups he built or influenced.<Cite id={7} /><Cite id={10} /> In November 2025 he left.
       </p>
 
       <p>
-        The split wasn&rsquo;t personal drama for its own sake. It was a fight over the future of
-        AI. After ChatGPT launched in 2022, Meta poured billions into large language models:
-        hiring aggressively, open-sourcing Llama, and eventually creating a new division called
-        Meta Superintelligence Labs, led by former Scale AI CEO Alexandr Wang.<Cite id={11} />
-        <Cite id={12} /> The message was clear: the company&rsquo;s bet was on scaling chatbots.
+        The disagreement was about direction. After ChatGPT, Meta put heavy money behind large
+        language models, open-sourced Llama, and stood up Meta Superintelligence Labs under
+        former Scale AI CEO Alexandr Wang.<Cite id={11} /><Cite id={12} /> The company was
+        optimizing for chatbot-scale competition.
       </p>
 
       <p>
-        LeCun disagreed, and said so publicly. Months before his departure, he told an audience in Brooklyn
-        that LLMs &ldquo;are sucking the air out of the room anywhere they go, and so
-        there&rsquo;s basically no resources left for anything else.&rdquo; He argued they were
-        useful tools, but not a path to human-level intelligence.<Cite id={12} /> At ETH
-        Zürich, he went further: most of Silicon Valley is focused on LLMs, and his contrarian
-        view has made him unpopular in scaling circles.<Cite id={1} />
+        LeCun had been saying in public that LLMs were crowding out other research. In Brooklyn,
+        months earlier, he called them systems that &ldquo;are sucking the air out of the room
+        anywhere they go,&rdquo; useful but not a route to human-level intelligence.<Cite id={12} />{" "}
+        At ETH he repeated that most of Silicon Valley was stuck on that path, and that his
+        view made him unpopular there.<Cite id={1} />
       </p>
 
       <blockquote>
@@ -365,28 +367,23 @@ export function AmiLabsBriefing() {
       </blockquote>
 
       <p>
-        The irony is sharp. Much of the JEPA research AMI Labs is built on (I-JEPA and V-JEPA)
-        was developed inside Meta&rsquo;s own labs.<Cite id={5} /><Cite id={6} /> LeCun helped
-        create the intellectual foundation at FAIR, then watched Meta prioritize commercializing
-        Llama over the world model work he believed mattered more.
+        I-JEPA and V-JEPA came out of Meta while he was there.<Cite id={5} /><Cite id={6} /> FAIR
+        incubated the research. Product priority still moved toward Llama.
       </p>
 
       <p>
-        When he announced his exit, LeCun kept it cordial. He said Meta would remain a partner
-        in his new venture, and Zuckerberg publicly credited him with laying the groundwork for
-        Meta&rsquo;s AI infrastructure.<Cite id={10} /> But the direction of travel was
-        opposite: Meta doubled down on LLM scaling under Superintelligence Labs; LeCun
-        incorporated AMI Labs in Paris weeks later to prove the industry is betting on the wrong
-        architecture.<Cite id={3} /><Cite id={2} />
+        Publicly the exit was polite. LeCun said Meta would stay involved as a partner;
+        Zuckerberg credited him with foundational work.<Cite id={10} /> Then Meta kept scaling
+        LLMs under Superintelligence Labs, and LeCun incorporated AMI Labs in Paris weeks
+        later.<Cite id={3} /><Cite id={2} />
       </p>
 
       <h2 id="ami-labs">AMI Labs: The Company</h2>
 
       <p>
-        Near the end of his ETH Zürich talk, LeCun formally announced AMI Labs, Advanced
-        Machine Intelligence Labs.<Cite id={1} /><Cite id={2} /> The mission: build
-        &ldquo;physical AI&rdquo;: systems that can control robots, factory equipment, and
-        medical devices in the messy real world, where chatbots don&rsquo;t work.<Cite id={1} />
+        At the end of the ETH talk he put a name on the project: Advanced Machine Intelligence
+        Labs.<Cite id={1} /><Cite id={2} /> He wants systems for robots, plants, and clinical
+        settings. Places where a chatbot that only predicts text does not help.<Cite id={1} />
       </p>
 
       <div className="my-8 overflow-x-auto">
@@ -440,7 +437,7 @@ export function AmiLabsBriefing() {
 
       <ChartFigure
         title="Figure 3. How AMI Labs' seed round compares"
-        caption="Single-round raises in USD billions. AMI Labs: $1.03 billion seed (March 2026). Thinking Machines Lab: $2 billion seed (July 2025). Safe Superintelligence: $2 billion (2025). World Labs: $1 billion Series B (February 2026). Anthropic shown for scale: $3.5 billion Series E (March 2025), not a seed round."
+        caption="Single-round raises in USD billions. AMI Labs: $1.03B seed (Mar 2026). Thinking Machines: $2B seed (Jul 2025). SSI (Safe Superintelligence): $2B (2025). World Labs: $1B Series B (Feb 2026). Anthropic: $3.5B Series E (Mar 2025), shown for scale."
         source="StartupHub.ai; Reuters; Calcalist; Tracxn; Anthropic"
         sourceRef={[2, 13, 15, 16, 17]}
         sourceUrl="https://www.startuphub.ai/ai-news/artificial-intelligence/2026/yann-lecun-on-world-models-and-the-ai-revolution"
@@ -488,8 +485,8 @@ export function AmiLabsBriefing() {
       <h2 id="executives">Who&rsquo;s Running It</h2>
 
       <p>
-        AMI Labs pulled senior talent directly from Meta and top research labs. Four of the six
-        named executives previously worked at Meta.
+        Four of the six people named below came out of Meta. The others bring domain product
+        experience and an Asia research base.
       </p>
 
       <div className="my-8 overflow-x-auto">
@@ -537,10 +534,10 @@ export function AmiLabsBriefing() {
       </div>
 
       <p>
-        LeBrun is the commercial bridge. As CEO of Nabla, AMI&rsquo;s first partner, he can
-        test JEPA in real hospitals. In the Q&amp;A, LeCun explained that safety rules (like
-        &ldquo;don&rsquo;t hit the wall&rdquo;) can be added with a small amount of extra
-        training on top of the core model, without rebuilding it from scratch.<Cite id={1} />
+        LeBrun already runs Nabla, the clinical documentation partner. That gives AMI a place
+        to try the tech with doctors before any standalone product ships. In the Q&amp;A, LeCun
+        said constraints like &ldquo;don&rsquo;t hit the wall&rdquo; can be taught with a small
+        head on top of a frozen world model, without retraining the whole stack.<Cite id={1} />
       </p>
 
       <h2 id="competitive">Competitive Position</h2>
@@ -556,8 +553,8 @@ export function AmiLabsBriefing() {
             </p>
             <p className="mt-2 font-serif text-lg font-bold text-stone-900">World Labs</p>
             <p className="mt-2 text-sm leading-relaxed text-stone-600">
-              Fei-Fei Li&rsquo;s startup. Builds AI for 3D spaces and video. Visual products:
-              environments you can see and move through.<Cite id={14} />
+              Fei-Fei Li&rsquo;s company. Spatial and video AI meant to generate and navigate 3D
+              scenes.<Cite id={14} />
             </p>
           </div>
           <div className="rounded-sm border border-stone-200 bg-white p-4">
@@ -566,30 +563,26 @@ export function AmiLabsBriefing() {
             </p>
             <p className="mt-2 font-serif text-lg font-bold text-stone-900">World models</p>
             <p className="mt-2 text-sm leading-relaxed text-stone-600">
-              What LeCun and AMI Labs mean. An internal model of how the world works, used to
-              predict outcomes and plan actions. Not a product that generates pixels. Built with
-              JEPA.
+              LeCun&rsquo;s term for an internal predictor of how the world changes under
+              action. AMI Labs builds this with JEPA. It is not a video generator.
             </p>
           </div>
         </div>
         <p className="mt-4 text-sm text-stone-500">
-          World Labs (the company) is not building LeCun&rsquo;s JEPA world models. The names
-          overlap. The goals do not.
+          Similar wording. Different product. World Labs is not shipping LeCun&rsquo;s JEPA
+          stack.
         </p>
       </div>
 
       <p>
-        Follow the money and almost all of it has gone to chatbots. OpenAI, Google, Anthropic,
-        Meta: scale the language model, ship the API, repeat. Fei-Fei Li&rsquo;s company World
-        Labs is chasing spatial AI. AMI Labs is chasing something else: systems that watch the
-        real world, learn how it behaves, and figure out what to do inside it.
+        Most of the capital in frontier AI still funds chatbots. World Labs (the company) raised
+        for spatial generation. AMI raised on JEPA and a long product clock.
       </p>
 
       <p>
-        The chart below uses one leading company per approach and only numbers from public
-        funding announcements. Anthropic stands for the LLM camp. World Labs stands for spatial
-        AI. AMI Labs stands for the JEPA bet. Different stages and round types, but it shows
-        where capital is landing.
+        Figure 4 picks one public company for each camp and uses disclosed funding numbers
+        only: Anthropic for LLMs, World Labs for spatial AI, AMI for JEPA. Stage and round
+        type differ, so treat it as a capital map, not a valuation tournament.
       </p>
 
       <ChartFigure
@@ -643,41 +636,41 @@ export function AmiLabsBriefing() {
       </div>
 
       <p>
-        The pattern is clear even with imperfect comparisons. LLM companies are already at scale.
-        Spatial AI is funded and building. AMI Labs raised a massive seed round on a thesis, not
-        a product.
+        Even with those caveats, the gap is hard to miss. Anthropic already ships. World Labs
+        has funding and a build-out ahead. AMI has a large seed and a thesis, and no product
+        yet.
       </p>
 
       <h2 id="takeaway">What to Watch</h2>
 
       <p>
-        LeCun closed with direct advice: researchers should stop focusing on chatbots, pixel
-        generators, and reinforcement learning. He called RL &ldquo;horribly
-        sample-inefficient.&rdquo;<Cite id={1} /> Whether he&rsquo;s right will shape AMI
-        Labs&rsquo; future. Three things to track:
+        LeCun closed the lecture by telling researchers to stop concentrating on chatbots,
+        pixel generators, and reinforcement learning. He called RL &ldquo;horribly
+        sample-inefficient.&rdquo;<Cite id={1} /> Whether markets agree will show up in the
+        next couple of years. A few concrete markers:
       </p>
 
       <ol>
         <li>
-          <strong>Can they keep hiring?</strong> Four Meta veterans in six months is a strong
-          start. Sustaining that pace will show whether top researchers believe in the vision.
+          <strong>Hiring.</strong> Four Meta alumni in the founding circle is a start. If that
+          pipeline dries up, the thesis gets harder to staff.
         </li>
         <li>
-          <strong>Does Nabla prove it works?</strong> The Nabla partnership is the first real
-          test. If JEPA beats chatbot wrappers in hospitals, enterprise buyers have something
-          concrete to evaluate.
+          <strong>Nabla.</strong> A working clinical deployment would give outside buyers
+          something to test against LLM wrappers, instead of another research video.
         </li>
         <li>
-          <strong>Do chatbots plateau?</strong> AMI&rsquo;s $3.5B valuation bets that scaling
-          language models hits a wall. If GPT-5 and beyond keep improving through 2028 without a
-          new architecture, AMI&rsquo;s five-year timeline gets harder to defend.
+          <strong>LLM progress.</strong> AMI&rsquo;s price assumes text scaling slows. If
+          frontier chatbots keep jumping through 2028 without a new architecture, a five-year
+          research timeline looks expensive.
         </li>
       </ol>
 
       <p>
-        Most databases list AMI Labs as just another AI startup. At $3.5 billion with no product,
-        it&rsquo;s really a bet that the entire chatbot playbook is wrong, and that whoever
-        builds AI that understands the physical world will win the next decade.
+        Crunchbase-style tags will still call AMI an AI research startup. At $3.5 billion with
+        no product, the investment case is narrower: either LeCun is right that the industry
+        overbought next-token prediction, or a lot of seed capital is sitting on a long, risky
+        clock.
       </p>
 
       <References items={REFERENCES} />

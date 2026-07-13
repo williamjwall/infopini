@@ -1,6 +1,6 @@
 ---
 title: "Inside AMI Labs: Yann LeCun's $3.5 Billion Bet Against the LLM Consensus"
-excerpt: "From an ETH Zürich lecture to a record-breaking seed round — a structured intelligence briefing on Advanced Machine Intelligence Labs, JEPA world models, and the widening rift in frontier AI."
+excerpt: "LeCun left Meta, raised $1.03B for AMI Labs, and argued at ETH Zürich that chatbot scaling will not get us to human-level intelligence."
 category: tech
 author: "Infopini Research"
 date: 2026-07-13

@@ -28,69 +28,56 @@ const data = [
 
 export function VJEPAErrorChart() {
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={data} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" />
-        <XAxis
-          dataKey="frame"
-          tick={{ fontSize: 11, fill: "#78716c" }}
-          axisLine={{ stroke: "#d6d3d1" }}
-          tickLine={false}
-          label={{
-            value: "Video frame",
-            position: "insideBottom",
-            offset: -4,
-            style: { fontSize: 11, fill: "#a8a29e" },
-          }}
-        />
-        <YAxis
-          tick={{ fontSize: 11, fill: "#78716c" }}
-          axisLine={{ stroke: "#d6d3d1" }}
-          tickLine={false}
-          label={{
-            value: "Prediction error",
-            angle: -90,
-            position: "insideLeft",
-            offset: 10,
-            style: { fontSize: 11, fill: "#a8a29e" },
-          }}
-        />
-        <Tooltip
-          contentStyle={{
-            fontSize: 12,
-            border: "1px solid #e7e5e4",
-            borderRadius: 2,
-          }}
-        />
-        <ReferenceLine
-          x={15}
-          stroke="#d6d3d1"
-          strokeDasharray="4 4"
-          label={{
-            value: "Physics violation",
-            position: "top",
-            fontSize: 10,
-            fill: "#a8a29e",
-          }}
-        />
-        <Line
-          type="monotone"
-          dataKey="normal"
-          name="Physical sequence"
-          stroke="#a8a29e"
-          strokeWidth={2}
-          dot={false}
-        />
-        <Line
-          type="monotone"
-          dataKey="violation"
-          name="Violation sequence"
-          stroke="#1c1917"
-          strokeWidth={2}
-          dot={false}
-        />
-        <Legend wrapperStyle={{ fontSize: 12, paddingTop: 8 }} />
-      </LineChart>
-    </ResponsiveContainer>
+    <div className="w-full min-w-0">
+      <ResponsiveContainer width="100%" height={260}>
+        <LineChart data={data} margin={{ top: 8, right: 8, left: -10, bottom: 8 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" />
+          <XAxis
+            dataKey="frame"
+            tick={{ fontSize: 10, fill: "#78716c" }}
+            axisLine={{ stroke: "#d6d3d1" }}
+            tickLine={false}
+          />
+          <YAxis
+            tick={{ fontSize: 10, fill: "#78716c" }}
+            axisLine={{ stroke: "#d6d3d1" }}
+            tickLine={false}
+            width={32}
+          />
+          <Tooltip
+            contentStyle={{
+              fontSize: 12,
+              border: "1px solid #e7e5e4",
+              borderRadius: 2,
+            }}
+          />
+          <ReferenceLine
+            x={15}
+            stroke="#d6d3d1"
+            strokeDasharray="4 4"
+          />
+          <Line
+            type="monotone"
+            dataKey="normal"
+            name="Physical sequence"
+            stroke="#a8a29e"
+            strokeWidth={2}
+            dot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey="violation"
+            name="Violation sequence"
+            stroke="#1c1917"
+            strokeWidth={2}
+            dot={false}
+          />
+          <Legend wrapperStyle={{ fontSize: 11, paddingTop: 4 }} />
+        </LineChart>
+      </ResponsiveContainer>
+      <p className="mt-1 text-center text-[10px] text-stone-400">
+        Dashed line marks the physics violation
+      </p>
+    </div>
   );
 }

@@ -23,14 +23,16 @@ export function ChartFigure({
     : [];
 
   return (
-    <figure className="my-10 overflow-hidden rounded-sm border border-stone-200 bg-white">
-      <div className="border-b border-stone-100 bg-stone-50 px-5 py-3">
-        <figcaption className="font-serif text-sm font-semibold text-stone-800">
+    <figure className="my-8 overflow-hidden rounded-sm border border-stone-200 bg-white md:my-10">
+      <div className="border-b border-stone-100 bg-stone-50 px-4 py-3 md:px-5">
+        <figcaption className="font-serif text-sm font-semibold leading-snug text-stone-800">
           {title}
         </figcaption>
       </div>
-      <div className="px-4 py-6 md:px-6">{children}</div>
-      <div className="border-t border-stone-100 bg-stone-50 px-5 py-3">
+      <div className="min-w-0 overflow-x-auto px-2 py-5 sm:px-4 md:px-6 md:py-6">
+        {children}
+      </div>
+      <div className="border-t border-stone-100 bg-stone-50 px-4 py-3 md:px-5">
         <p className="text-xs leading-relaxed text-stone-500">{caption}</p>
         {(source || refs.length > 0 || sourceUrl) && (
           <p className="mt-2 text-xs text-stone-400">

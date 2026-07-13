@@ -4,8 +4,8 @@ import { CATEGORIES } from "@/types/article";
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-stone-200 bg-stone-50">
-      <div className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid gap-10 md:grid-cols-4">
+      <div className="mx-auto max-w-6xl px-4 py-10 md:py-12">
+        <div className="grid gap-8 md:grid-cols-4 md:gap-10">
           <div className="md:col-span-2">
             <p className="font-serif text-2xl font-bold text-stone-900">Infopini</p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-stone-500">
