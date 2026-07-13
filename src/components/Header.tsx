@@ -24,10 +24,13 @@ export function Header() {
               Infopini
             </span>
           </Link>
-          <div className="hidden items-center gap-6 md:flex">
-            <span className="text-xs font-medium uppercase tracking-widest text-stone-400">
-              Sections
-            </span>
+          <nav className="hidden items-center gap-6 md:flex" aria-label="Sections">
+            <Link
+              href="/"
+              className="text-sm font-medium text-stone-600 transition-colors hover:text-stone-900"
+            >
+              Latest
+            </Link>
             {CATEGORIES.map((cat) => (
               <Link
                 key={cat.slug}
@@ -37,7 +40,7 @@ export function Header() {
                 {cat.label}
               </Link>
             ))}
-          </div>
+          </nav>
         </div>
 
         <nav className="-mx-4 flex items-center gap-5 overflow-x-auto border-t border-stone-100 px-4 py-2.5 md:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
